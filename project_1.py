@@ -4,7 +4,7 @@ import random
 
 #This allows for the UI to be created 
 pygame.init()
-background = pygame.image.load("RPS.jpg")
+background = pygame.image.load("Rock-Paper-Scissors/RPS.jpg")
 background = pygame.transform.scale(background, (1000, 500))
 screen = pygame.display.set_mode((1000, 500))
 screen.blit(background, (0,0))
