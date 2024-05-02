@@ -69,9 +69,9 @@ class RPS:
                         elif event.key == pygame.K_s:
                             self.user_response = "Scissors"
                         elif event.key == pygame.K_SPACE: 
-                             self.round+=1
                              self.player_score = 0 
                              self.computer_score = 0
+                             self.round += 1
                         self.location = random.randint(0, len(self.all_choices)-1)
                         self.computer_response = self.all_choices[self.location]
                         screen.fill((0, 0, 0))
@@ -124,7 +124,7 @@ class RPS:
             
 #This allows for the game to be played            
 class testing: 
-    rps_game_test = RPS(14)
+    rps_game_test = RPS(5)
     rps_game_test.main()
 
 
