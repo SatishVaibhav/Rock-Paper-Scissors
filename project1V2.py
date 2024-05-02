@@ -3,7 +3,6 @@ import pygame
 import random 
 
 #This allows for the UI to be created 
-
 pygame.init()
 background = pygame.image.load("Rock-Paper-Scissors/RPS.jpg")
 background = pygame.transform.scale(background, (1000, 500))
@@ -39,13 +38,13 @@ class RPS:
     def display_result(self): 
         result = ""
         if self.player_score > self.computer_score: 
-            result = "YOU WON!!! :)"
+            result = "YOU WON!!! :) "
         elif self.player_score < self.computer_score: 
             result = "YOU LOST :( "
         else: 
-            result = "IT'S A TIE!!!"
-        result_text = font.render(result, True, (0,0,0))
-        screen.blit(result_text, (100, 200))
+            result = "IT'S A TIE!!! :o"
+        result_text = font.render(result, True, (255,215,0))
+        screen.blit(result_text, (100, 290))
         pygame.display.flip()
 
     def begin_game(self):
@@ -79,10 +78,10 @@ class RPS:
                         self.game()
                         score_text = font.render(f"Scoreboard: {self.player_score} - {self.computer_score}", True, (0,0,255))
                         displayer = font.render(f"{self.display_text}",True, (0,255,0))
-                        screen.blit(displayer, (50,170))
+                        screen.blit(displayer, (50,210))
                         self.round -= 1
                         round_text = font.render(f"Remaining Rounds: " + str(self.round), True, (255,0,0))
-                        screen.blit(score_text, (100, 100))
+                        screen.blit(score_text, (100, 130))
                         screen.blit(round_text, (50, 50))
                         pygame.display.flip()
                         if self.round == 0:
@@ -125,7 +124,7 @@ class RPS:
             
 #This allows for the game to be played            
 class testing: 
-    rps_game_test = RPS(10)
+    rps_game_test = RPS(14)
     rps_game_test.main()
 
 
