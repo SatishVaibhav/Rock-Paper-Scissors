@@ -4,7 +4,7 @@ import random
 
 #This allows for the UI to be created 
 pygame.init()
-background = pygame.image.load("Rock-Paper-Scissors/RPS.jpg")
+background = pygame.image.load('RPS.png')
 background = pygame.transform.scale(background, (1000, 500))
 screen = pygame.display.set_mode((1000, 500))
 screen.blit(background, (0,0))
@@ -64,10 +64,13 @@ class RPS:
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_r:
                             self.user_response = "Rock"
+                            self.round -= 1
                         elif event.key == pygame.K_p:
                             self.user_response = "Paper"
+                            self.round -= 1
                         elif event.key == pygame.K_s:
                             self.user_response = "Scissors"
+                            self.round -= 1
                         elif event.key == pygame.K_SPACE: 
                              self.player_score = 0 
                              self.computer_score = 0
@@ -79,7 +82,6 @@ class RPS:
                         score_text = font.render(f"Scoreboard: {self.player_score} - {self.computer_score}", True, (0,0,255))
                         displayer = font.render(f"{self.display_text}",True, (0,255,0))
                         screen.blit(displayer, (50,210))
-                        self.round -= 1
                         round_text = font.render(f"Remaining Rounds: " + str(self.round), True, (255,0,0))
                         screen.blit(score_text, (100, 130))
                         screen.blit(round_text, (50, 50))
