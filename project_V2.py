@@ -4,7 +4,7 @@ import random
 
 #This allows for the UI to be created 
 pygame.init()
-background = pygame.image.load("Rock-Paper-Scissors/RPS.jpg")
+background = pygame.image.load("RPS.jpg")
 background = pygame.transform.scale(background, (1000, 500))
 screen = pygame.display.set_mode((1000, 500))
 screen.blit(background, (0,0))
@@ -57,6 +57,8 @@ class RPS:
             self.begin_game()
             running = True
             clock = pygame.time.Clock()
+            self.location = -1
+            self.computer_response = ""
             while running: 
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
@@ -72,10 +74,11 @@ class RPS:
                              self.player_score = 0 
                              self.computer_score = 0
                              self.round += 1
-                        self.location = random.randint(0, len(self.all_choices)-1)
-                        self.computer_response = self.all_choices[self.location]
                         screen.fill((0, 0, 0))
                         self.game()
+                        self.location = random.randint(0, len(self.all_choices)-1)
+                        self.computer_response = self.all_choices[self.location]
+                        computer_choice = font.render(f"The computer chose: {self.computer_response}", True, (255, 255, 255))
                         score_text = font.render(f"Scoreboard: {self.player_score} - {self.computer_score}", True, (0,0,255))
                         displayer = font.render(f"{self.display_text}",True, (0,255,0))
                         screen.blit(displayer, (50,210))
@@ -83,11 +86,16 @@ class RPS:
                         round_text = font.render(f"Remaining Rounds: " + str(self.round), True, (255,0,0))
                         screen.blit(score_text, (100, 130))
                         screen.blit(round_text, (50, 50))
-                        pygame.display.flip()
+                        if (self.round == 5):
+                            computer_choice = font.render(f"The computer chose: ", True, (255, 255, 255))
+                            screen.blit(computer_choice, (90, 90))
+                        else:
+                            screen.blit(computer_choice, (90, 90))
                         if self.round == 0:
                             self.display_result()
                             pygame.time.wait(2000)
                             running = False
+                        pygame.display.flip()
                 clock.tick(60)
             pygame.quit()
 
